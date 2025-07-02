@@ -1,4 +1,5 @@
 "use server";
+
 import { SESSION_COOKIE_KEY } from "@/constants/auth.constants";
 import { cookies } from "next/headers";
 import { Account, Client, Databases, Storage } from "node-appwrite";
@@ -14,9 +15,8 @@ export const createSessionClient = async () => {
   const client = new Client().setEndpoint(urlEndpoint).setProject(project);
 
   const session = (await cookies()).get(SESSION_COOKIE_KEY);
-
   if (!session || !session.value) {
-    throw new Error("No session");
+    throw new Error("Please sign in again.");
   }
 
   client.setSession(session.value);
@@ -25,7 +25,6 @@ export const createSessionClient = async () => {
     get account() {
       return new Account(client);
     },
-
     get databases() {
       return new Databases(client);
     },

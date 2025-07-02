@@ -1,7 +1,13 @@
+import { HOME_PATH } from "@/constants/path.constants";
+import { getLoggedInUser } from "@/lib/actions/auth.actions";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 import { PropsWithChildren } from "react";
 
 const Layout = async ({ children }: PropsWithChildren) => {
+  const user = await getLoggedInUser();
+  if (user) redirect(HOME_PATH);
+
   return (
     <main className="flex h-screen">
       <section className="bg-brand flex max-w-[580px] flex-1 items-center justify-center max-sm:hidden">
@@ -37,6 +43,7 @@ const Layout = async ({ children }: PropsWithChildren) => {
           alt="logo"
           width={284}
           height={82}
+          className="md:hidden"
         />
 
         {children}

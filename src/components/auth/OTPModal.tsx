@@ -13,9 +13,13 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { HOME_PATH } from "@/constants/path.constants";
+import { sendEmailOtp, verifyOtp } from "@/lib/actions/auth.actions";
 import { AlertDialogDescription } from "@radix-ui/react-alert-dialog";
 import Image from "next/image";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { MouseEvent, useState } from "react";
+import { toast } from "sonner";
 
 interface Props {
   accountId: string;
@@ -25,16 +29,57 @@ interface Props {
 }
 
 const OTPModal = ({ accountId, email, open, onClose }: Props) => {
+  const router = useRouter();
   const [code, setCode] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async (e: MouseEvent<unknown>) => {
+    e.stopPropagation();
+    setLoading(true);
 
-  const handleResend = async () => {};
+    try {
+      const response = await verifyOtp({ accountId, code });
+      if (response.message) {
+        toast.error(response.message);
+      } else if (response.sessionId) {
+        router.push(HOME_PATH);
+        onClose();
+      }
+    } catch (error) {
+      toast.error(
+        error instanceof Error ? error.message : "Something went wrong",
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleResend = async (e: MouseEvent<unknown>) => {
+    e.stopPropagation();
+    setLoading(true);
+    try {
+      const response = await sendEmailOtp(email);
+
+      if (response.message) {
+        toast.error(response.message);
+      } else if (response.userId) {
+        toast.success(
+          `OTP sent to ${email} successfully. Please check your email.`,
+        );
+      }
+    } catch (error) {
+      toast.error(
+        error instanceof Error ? error.message : "Something went wrong",
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <AlertDialog open={open}>
       <AlertDialogContent className="shad-alert-dialog!">
-        <AlertDialogHeader className="relative flex justify-center">
+        <AlertDialogHeader className="relative flex justify-center gap-4">
           <AlertDialogTitle className="h2!">Enter OTP</AlertDialogTitle>
           <Image
             src="/assets/icons/close-dark.svg"
@@ -45,7 +90,8 @@ const OTPModal = ({ accountId, email, open, onClose }: Props) => {
             onClick={onClose}
           />
           <AlertDialogDescription className="text-light-100">
-            We've sent a code to <span className="text-brand-100">{email}</span>
+            We've sent a code to{" "}
+            <span className="text-brand-100 font-semibold">{email}</span>
           </AlertDialogDescription>
         </AlertDialogHeader>
 
@@ -62,17 +108,20 @@ const OTPModal = ({ accountId, email, open, onClose }: Props) => {
 
         <AlertDialogFooter>
           <AlertDialogAction
-            className="shad-submit-btn!"
+            className="shad-submit-btn! min-h-[50px] w-full"
             onClick={handleSubmit}
+            disabled={loading}
           >
-            <span>Submit</span>
-            <Image
-              src="/assets/icons/loader.svg"
-              alt="loader"
-              width={24}
-              height={24}
-              className="animate-spin"
-            />
+            <span>{loading ? "Submitting..." : "Submit"}</span>
+            {loading && (
+              <Image
+                src="/assets/icons/loader.svg"
+                alt="loader"
+                width={24}
+                height={24}
+                className="animate-spin"
+              />
+            )}
           </AlertDialogAction>
         </AlertDialogFooter>
 

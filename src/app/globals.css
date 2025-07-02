@@ -293,13 +293,13 @@
   @apply text-light-100 body-14 w-full pt-2; /* Important */
 }
 @utility shad-form-message {
-  @apply text-red body-14; /* Important */
+  @apply text-red body-14 pb-2; /* Important */
 }
 @utility shad-alert-dialog {
   @apply max-w-[95%] space-y-4 rounded-xl border-none bg-white px-4 py-10 outline-none sm:w-fit md:rounded-[30px] md:px-8; /* Important */
 }
 @utility shad-submit-btn {
-  @apply bg-brand button hover:bg-brand-100 rounded-full transition-all; /* Important */
+  @apply bg-brand button hover:bg-brand-100 cursor-pointer rounded-full transition-all; /* Important */
 }
 @utility shad-otp {
   @apply flex w-full justify-between gap-1 sm:gap-2; /* Important */
@@ -307,12 +307,9 @@
 @utility shad-otp-slot {
   @apply ring-brand shadow-drop-1 text-brand-100 border-light-300 flex size-12 justify-center gap-5 rounded-xl border-2 text-xl font-medium md:size-16; /* Important */
 }
-
 @utility shad-sheet {
   @apply pt-0; /* Important */
-}
 
-@utility shad-sheet {
   button {
     @apply outline-none focus:ring-0 focus:ring-offset-0 focus-visible:border-none focus-visible:ring-transparent focus-visible:ring-offset-0 focus-visible:outline-none; /* Important */
   }
@@ -448,7 +445,7 @@
   @apply h1 text-light-100 text-center md:text-left; /* Important */
 }
 @utility form-submit-button {
-  @apply primary-btn h-[66px]; /* Important */
+  @apply primary-btn h-[66px] cursor-pointer; /* Important */
 }
 @utility error-message {
   @apply body-14 bg-error/5 text-error mx-auto w-fit rounded-xl px-8 py-4 text-center; /* Important */
@@ -487,7 +484,7 @@
 
 /* FileUploader */
 @utility uploader-button {
-  @apply primary-btn shadow-drop-1 h-[52px] gap-2 px-10; /* Important */
+  @apply primary-btn shadow-drop-1 h-[52px] w-full cursor-pointer gap-2 px-10; /* Important */
 }
 @utility uploader-preview-list {
   @apply shadow-drop-3 fixed right-10 bottom-10 z-50 flex size-full h-fit max-w-[480px] flex-col gap-3 rounded-[20px] bg-white p-7; /* Important */
@@ -511,12 +508,12 @@
   @apply flex-center min-w-fit gap-4; /* Important */
 }
 @utility sign-out-button {
-  @apply flex-center bg-brand/10 text-brand hover:bg-brand/20 h-[52px] min-w-[54px] items-center rounded-full p-0 shadow-none transition-all; /* Important */
+  @apply flex-center bg-brand/10 text-brand hover:bg-brand/20 h-[52px] min-w-[54px] cursor-pointer items-center rounded-full p-0 shadow-none transition-all; /* Important */
 }
 
 /* Mobile Navigation */
 @utility mobile-header {
-  @apply flex h-[60px] justify-between px-5 sm:hidden; /* Important */
+  @apply flex h-[60px] items-center justify-between px-5 sm:hidden; /* Important */
 }
 @utility header-user {
   @apply text-light-100 sm:bg-brand/10 my-3 flex items-center gap-2 rounded-full p-1 sm:justify-center lg:justify-start lg:p-3; /* Important */
@@ -534,7 +531,7 @@
   @apply text-light-100 h5 flex h-[52px] w-full items-center justify-start gap-4 rounded-full px-6; /* Important */
 }
 @utility mobile-sign-out-button {
-  @apply h5 bg-brand/10 text-brand hover:bg-brand/20 flex h-[52px] w-full items-center gap-4 rounded-full px-6 shadow-none transition-all; /* Important */
+  @apply h5 bg-brand/10 text-brand hover:bg-brand/20 flex h-[52px] w-full cursor-pointer items-center gap-4 rounded-full px-6 shadow-none transition-all; /* Important */
 }
 
 /* OTP Modal */
@@ -564,13 +561,13 @@
   @apply remove-scrollbar hidden h-screen w-[90px] flex-col overflow-auto px-5 py-7 sm:flex lg:w-[280px] xl:w-[325px]; /* Important */
 }
 @utility sidebar-nav {
-  @apply h5 text-brand mt-9 flex-1 gap-1; /* Important */
+  @apply h5 text-brand flex-1 gap-1; /* Important */
 }
 @utility sidebar-nav-item {
   @apply text-light-100 h5 flex h-[52px] items-center justify-center gap-4 rounded-xl lg:w-full lg:justify-start lg:rounded-full lg:px-[30px]; /* Important */
 }
 @utility sidebar-user-info {
-  @apply bg-brand/10 text-light-100 mt-4 flex items-center justify-center gap-2 rounded-full p-1 lg:justify-start lg:p-3; /* Important */
+  @apply bg-brand/10 text-light-100 flex items-center justify-center gap-2 rounded-full p-1 lg:justify-start lg:p-3; /* Important */
 }
 @utility sidebar-user-avatar {
   @apply aspect-square w-10 rounded-full object-cover; /* Important */

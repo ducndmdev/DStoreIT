@@ -44,6 +44,8 @@ const AuthForm = <T extends FieldValues>({
 
   const handleSubmit = async (values: T) => {
     setLoading(true);
+    setErrorMessage("");
+
     try {
       const response = await onSubmit(values);
       if (response.message) {
