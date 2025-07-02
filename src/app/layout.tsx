@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { PropsWithChildren } from "react";
@@ -17,7 +18,10 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} antialiased`}>{children}</body>
+      <body className={`${poppins.variable} antialiased`}>
+        {children}
+        <Toaster richColors position="top-center" />
+      </body>
     </html>
   );
 };

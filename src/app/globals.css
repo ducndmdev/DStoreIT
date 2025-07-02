@@ -19,9 +19,10 @@
   --color-light-400: #f2f4f8;
   --color-dark-100: #04050c;
   --color-dark-200: #131524;
-  --shadow-drop-1: "0px 10px 30px 0px rgba(66, 71, 97, 0.1)";
-  --shadow-drop-2: "0 8px 30px 0 rgba(65, 89, 214, 0.3)";
-  --shadow-drop-3: "0 8px 30px 0 rgba(65, 89, 214, 0.1)";
+  --shadow-drop-1: 0px 10px 30px 0px rgba(66, 71, 97, 0.1);
+  --shadow-drop-2: 0 8px 30px 0 rgba(65, 89, 214, 0.3);
+  --shadow-drop-3: 0 8px 30px 0 rgba(65, 89, 214, 0.1);
+
   --animate-caret-blink: caret-blink 1.25s ease-out infinite;
 
   @keyframes caret-blink {
@@ -286,16 +287,16 @@
 }
 
 @utility shad-form-item {
-  @apply border-light-300 shadow-drop-1 flex h-[78px] flex-col justify-center rounded-xl border px-4;
+  @apply border-light-300 shadow-drop-1 flex min-h-[78px] flex-col justify-center rounded-xl border px-4;
 }
 @utility shad-form-label {
   @apply text-light-100 body-14 w-full pt-2; /* Important */
 }
 @utility shad-form-message {
-  @apply text-red body-14 ml-4; /* Important */
+  @apply text-red body-14; /* Important */
 }
 @utility shad-alert-dialog {
-  @apply max-w-[95%] space-y-4 rounded-xl bg-white px-4 py-10 outline-none sm:w-fit md:rounded-[30px] md:px-8; /* Important */
+  @apply max-w-[95%] space-y-4 rounded-xl border-none bg-white px-4 py-10 outline-none sm:w-fit md:rounded-[30px] md:px-8; /* Important */
 }
 @utility shad-submit-btn {
   @apply bg-brand button hover:bg-brand-100 rounded-full transition-all; /* Important */
@@ -304,7 +305,7 @@
   @apply flex w-full justify-between gap-1 sm:gap-2; /* Important */
 }
 @utility shad-otp-slot {
-  @apply ring-brand shadow-drop-1 text-brand-100 border-light-300 flex size-12 justify-center gap-5 rounded-xl border-2 text-[40px] font-medium md:size-16; /* Important */
+  @apply ring-brand shadow-drop-1 text-brand-100 border-light-300 flex size-12 justify-center gap-5 rounded-xl border-2 text-xl font-medium md:size-16; /* Important */
 }
 
 @utility shad-sheet {
@@ -427,7 +428,7 @@
 }
 
 @utility share-wrapper {
-  @apply !mt-2 space-y-2; /* Important */
+  @apply mt-2 space-y-2; /* Important */
 }
 @utility share-input-field {
   @apply body-14 shad-no-focus shadow-drop-1 h-[52px] w-full rounded-full border px-4; /* Important */
